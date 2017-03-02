@@ -4,7 +4,9 @@
 
 <body>
     <h1>{{ title }} is Working</h1>
-    {% for obj in object_list %} {{obj.title}} <br/> {{obj.updated}} <br/> {% endfor %}
+    {% for obj in object_list %}
+    <!-- <a href='{% url "details" id=obj.id %}'>-->
+    <a href='{{obj.get_absolute_url}}'>{{obj.title}}</a> <br/> {{obj.updated}} <br/> {% endfor %}
 </body>
 
 </html>

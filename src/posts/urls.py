@@ -10,7 +10,7 @@ posts_delete
 urlpatterns = [
     url(r'^$', posts_list, name='home'),
     url(r'^create/$', posts_create, name='create'),
-    url(r'^details/$', posts_detail, name='details'),
+    url(r'^(?P<id>\d+)/$', posts_detail, name='details'),
     url(r'^update$', posts_update, name='update'),
     url(r'^delete/$', posts_delete, name='delete'),
 ]
