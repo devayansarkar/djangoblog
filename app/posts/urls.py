@@ -1,10 +1,16 @@
 from django.conf.urls import url
-from . import views as post_view
+from .views import(
+posts_list,
+posts_create,
+posts_detail,
+posts_update,
+posts_delete
+)
 
 urlpatterns = [
-    url(r'^$', post_view.posts_list, name='home'),
-    url(r'^create/$', post_view.posts_create, name='create'),
-    url(r'^details/$', post_view.posts_detail, name='details'),
-    url(r'^update$', post_view.posts_update, name='update'),
-    url(r'^delete/$', post_view.posts_delete, name='delete'),
+    url(r'^$', posts_list, name='home'),
+    url(r'^create/$', posts_create, name='create'),
+    url(r'^details/$', posts_detail, name='details'),
+    url(r'^update$', posts_update, name='update'),
+    url(r'^delete/$', posts_delete, name='delete'),
 ]

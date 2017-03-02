@@ -19,6 +19,6 @@ from posts import urls
 
 
 urlpatterns = [
-     url(r'^admin/', admin.site.urls, name='admin'),
+    url(r'^admin/', admin.site.urls, name='admin'),
     url(r'^posts/', include(urls), name='home'),
 ]

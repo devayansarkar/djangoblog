@@ -10,7 +10,7 @@ def posts_detail(request):
     return HttpResponse("<h1> Detail </h1>")
 
 def posts_list(request):
-    return HttpResponse("<h1> Lists </h1>")
+    return render(request,"index.html",{})
 
 def posts_update(request):
     return HttpResponse("<h1> Update </h1>")
