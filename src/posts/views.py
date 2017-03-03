@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,get_object_or_404
 from .forms import PostForm
@@ -11,7 +12,10 @@ def posts_create(request):
         instance = form.save(commit=False)
         print (form.cleaned_data.get('title'))
         instance.save()
+        messages.success(request,"Success! Well done!")
         return HttpResponseRedirect(instance.get_absolute_url())
+    else:
+        messages.error(request,"Nope! Not done!")
     # if request.method == 'POST':
     #     print (request.POST.get("content"))
     #     print (request.POST.get("title"))
@@ -55,7 +59,9 @@ def posts_update(request,id=None):
         instance = form.save(commit=False)
         print (form.cleaned_data.get('title'))
         instance.save()
+        messages.success(request,"<a href='#'>Success!</a> Well done!",extra_tags='html_safe')
         return HttpResponseRedirect(instance.get_absolute_url())
+    
     context_data={
         "title": instance.title,
         "instance":instance,
@@ -64,6 +70,11 @@ def posts_update(request,id=None):
     }
     return render(request,"post_form.html",context_data)
 
-def posts_delete(request):
-    return HttpResponse("<h1> Delete </h1>")
+def posts_delete(request,id=None):
+    instance = get_object_or_404(Post,id=id)
+   
+    instance.save()
+    messages.success(request,"<a href='#'>Success!</a> Well done!",extra_tags='html_safe')
+    return HttpResponseRedirect(instance.get_absolute_url())
+    
 
