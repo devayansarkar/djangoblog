@@ -8,9 +8,9 @@ posts_delete
 )
 
 urlpatterns = [
-    url(r'^$', posts_list, name='home'),
+    url(r'^$', posts_list, name='list'),
     url(r'^create/$', posts_create, name='create'),
     url(r'^(?P<id>\d+)/edit/$', posts_update, name='update'),
     url(r'^(?P<id>\d+)/$', posts_detail, name='details'),
-    url(r'^delete/$', posts_delete, name='delete'),
+    url(r'^(?P<id>\d+)/delete/$', posts_delete, name='delete'),
 ]
