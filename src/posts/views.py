@@ -6,7 +6,17 @@ from .models import Post
 # Create your views here.
 from .models import Post
 def posts_create(request):
-    return HttpResponse("<h1> Create </h1>")
+    form = PostForm(request.POST or None)
+    if form.is_valid():
+        instance = form.save(commit=False)
+        instance.save()
+    # if request.method == 'POST':
+    #     print (request.POST.get("content"))
+    #     print (request.POST.get("title"))
+    context={
+        "form": form,
+    }
+    return render(request,"post_form.html",context)
     
 def posts_detail(request,id=None):
     #instance = Post.objects.get(id=1) 
